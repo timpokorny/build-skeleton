@@ -7,9 +7,12 @@
  *   terms of the Common Development and Distribution License (the "License").
  *   You may not use this file except in compliance with the License.
  *
- *   You can obtain a copy of the License at http://opensource.org/licenses/CDDL-1.0
- *   See the License for the specific language governing permissions and limitations
- *   under the License.
+ *   Obtain a copy of the License at http://opensource.org/licenses/CDDL-1.0
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ *
+ *   This Software is provided "AS IS" and "WITH ALL FAULTS".
+ *   Use of this software is strictly AT YOUR OWN RISK!!!
  *
  */
 import java.io.File;

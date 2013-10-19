@@ -1,30 +1,40 @@
-
-
-import hlaunit.CommonSetup;
-
+/*
+ *   Copyright 2013 MYPROJECT-VENDOR
+ *
+ *   This file is part of MYPROJECT.
+ * 
+ *   MYPORJECT is free software; you can redistribute and/or modify it under the
+ *   terms of the Common Development and Distribution License (the "License").
+ *   You may not use this file except in compliance with the License.
+ *
+ *   You can obtain a copy of the License at http://opensource.org/licenses/CDDL-1.0
+ *   See the License for the specific language governing permissions and limitations
+ *   under the License.
+ *
+ */
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 /**
- * This class implements a TestNG test listener that will print out information about the passage
- * of a testing run as it happens. By default, no information is logged by TestNG unless the
- * verbosity level is turned up. If you do turn it up by 1 level (from 1 to 2 - out of 10), way
- * too much information is printed out. I just want to see whether tests are passing or failing.
- * This will take care of that for me.
- * <p/>
+ * This class is a TestNG test listener that will print test status information to the
+ * console in a manner that is easy to read and can easily be scanned for problems.
+ * 
+ * By default, no information is logged by TestNG unless the verbosity level is turned up.
+ * If you do turn it up by 1 level (from 1 to 2 - out of 10), way too much information is
+ * dumped out. I just want to be able to easily scan to see whether tests pass or fail.
+ * This listener takes care of that.
+ * 
  * Sample report:
- * <p/>
- * <pre>
- * P testValidCreate
- * P testInvalidCreate
- * F testSomethingFailed
- * S testThatWasSkipped
- * Z testThatFailedByPassedByPercentage
+ *
+ *      testThatHappilyPassed 
+ *      testSomethingElseThatPassed
+ * FAIL testThatFailed
+ * SKIP testThatWasSkipped
  * ...
- * </pre>
+ *
  */
-public class PorticoTestListener implements ITestListener
+public class SimpleTestLogger implements ITestListener
 {
 	//----------------------------------------------------------
 	//                    STATIC VARIABLES

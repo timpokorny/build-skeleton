@@ -1,14 +1,18 @@
 <?xml version="1.0"?>
 <!--
-                  Welcome to the Portico Build System
+             This project is using the Portico Build System
+ 
+      The Portico Build System is designed to support projects that
+      must build multiple artefacts or distributions from a single,
+      shared codebase. It is designed to be extended and allows all
+      logic for a particular artefact or distribution to be located
+      together to help make navigation of a large structure as easy
+      as possible. For full details, see the online documentation:
 
-       The Portico build system is an artefact-driven, modular, Ant
-       based system. The base framework is split up over a number of
-       different build files (base structure, macros, etc...) and is
-       designed to be extended rather than modified. The full system
-       is introduced and described in the online documentation:
-       
-       http://porticoproject.org/index.php?title=Building_Portico
+             https://github.com/timpokorny/build-skeleton
+
+         File: profiles/FIXMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+      Purpose: Defines tasks to build the linux installation packages.
 -->
 <project name="project.libraries">
 

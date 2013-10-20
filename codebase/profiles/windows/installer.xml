@@ -84,5 +84,55 @@
 		</nsis-installer>
 	</target>
 
+	<!-- ================================================================================= -->
+	<!--                             Zip-File Creation Targets                             -->
+	<!-- ================================================================================= -->
+	<!-- These are only run on command - they're not tied into the broader build system -->
+	<!--                                    -->
+	<!-- Windows 32-bit Zip FIle Generation -->
+	<!--                                    -->
+	<target name="zip.win32">
+		<!-- check to make sure the jre dir exists -->
+		<echo>Validating x86 JRE is available for bundling</echo>
+		<available file="${jdk.home.win32}/jre" property="jrefound"/>
+		<fail unless="jrefound" message="Could not locate 32-bit JRE. Searched ${jdk.home.win32}"/>
+
+		<!-- generate the tarball with the sandbox and the JRE in it -->
+		<zip destfile="${dist.dir}/${dist.name}-win32.zip">
+			<zipfileset dir="${sandbox.dir}"
+			            includes="**/*"
+			            excludes="lib/**/*64*,bin/**/*64*"
+			            prefix="${dist.name}"/>
+			<zipfileset dir="${jdk.home.win32}/jre"
+			            includes="**/*"
+			            prefix="${dist.name}/jre"/>
+		</zip>
+	</target>
+
+	<!--                                    -->
+	<!-- Windows 64-bit Zip File Generation -->
+	<!--                                    -->
+	<target name="zip.win64">
+		<!-- check to make sure the jre dir exists -->
+		<echo>Validating amd64 JRE is available for bundling</echo>
+		<available file="${jdk.home.win64}/jre" property="jrefound"/>
+		<fail unless="jrefound" message="Could not locate 64-bit JRE. Searched ${jdk.home.win64}"/>
+
+		<!-- generate the tarball with the sandbox and the JRE in it -->
+		<!-- we handle lib/bin separately so we can ensure only 64-bit stuff gets in -->
+		<zip destfile="${dist.dir}/${dist.name}-win64.zip">
+			<zipfileset dir="${sandbox.dir}"
+			            includes="**/*"
+			            excludes="lib/**/*,bin/**/*"
+			            prefix="${dist.name}"/>
+			<zipfileset dir="${sandbox.dir}"
+			            includes="lib/*.jar,lib/**/*64*,bin/**/*64*"
+			            prefix="${dist.name}"/>
+			<zipfileset dir="${jdk.home.win64}/jre"
+			            includes="**/*"
+			            prefix="${dist.name}/jre"/>
+		</zip>
+	</target>
+
 </project>
 

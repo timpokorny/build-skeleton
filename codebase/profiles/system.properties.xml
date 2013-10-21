@@ -73,20 +73,17 @@
 	-->
 	<platform/>
 
-	<!-- validate JAVA_HOME and set java.home property -->
-	<getJavaHome property="java.home"/>
-
 	<!-- =========================================================== -->
 	<!--          Locations, Resources and Build Directories         -->
 	<!-- =========================================================== -->
 	<!-- JDK Locations -->
 	<!-- These are typically used for locating a JRE to package -->
 	<!-- The specific values should be defined in build.properties -->
-	<property name="jdk.default.macosx"  location=""/>  <!-- override in local/build.properties -->
-	<property name="jdk.default.win32"   location=""/>  <!-- override in local/build.properties -->
-	<property name="jdk.default.win64"   location=""/>  <!-- override in local/build.properties -->
-	<property name="jdk.default.linux32" location=""/>  <!-- override in local/build.properties -->
-	<property name="jdk.default.linux64" location=""/>  <!-- override in local/build.properties -->
+	<property name="jdk.home.macosx"  location=""/>  <!-- override in local/build.properties -->
+	<property name="jdk.home.win32"   location=""/>  <!-- override in local/build.properties -->
+	<property name="jdk.home.win64"   location=""/>  <!-- override in local/build.properties -->
+	<property name="jdk.home.linux32" location=""/>  <!-- override in local/build.properties -->
+	<property name="jdk.home.linux64" location=""/>  <!-- override in local/build.properties -->
 	
 	<!-- Location Properties -->
 	<property name="lib.dir"                   location="lib"/>

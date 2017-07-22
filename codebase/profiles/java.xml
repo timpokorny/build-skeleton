@@ -63,7 +63,7 @@
 	     for a library can be changed in a single spot. The properties should be used
 	     when defining paths and the like later in the build file -->
 	<property name="testng.dir"            location="${lib.dir}/testng/testng-6.8"/>
-	<property name="log4j.dir"             location="${lib.dir}/log4j/apache-log4j-2.0-beta9"/>
+	<property name="log4j.dir"             location="${lib.dir}/log4j/apache-log4j-2.8.2"/>
 
 	<!-- Classpaths for individual libraries -->
 	<path id="lib.testng.classpath">
@@ -205,32 +205,29 @@
 
 	<!-- EXAMPLE: Remember to adjust for MYPROJECT or remove entirely -->
 	<!-- build the main portico jar file -->
-	<target name="jar.portico" extensionOf="jars" depends="compile,onejar">
+	<target name="jar.MYPROJECT" extensionOf="jars" depends="compile">
 		<!-- construct the main portico jar file -->
-		<jar destfile="${sandbox.dir}/lib/portico.jar">
+		<jar destfile="${sandbox.dir}/lib/MYPROJECT.jar">
 			<!-- portico code -->
-			<fileset dir="${portico.classes.dir}" includes="**/*.class"/>
+			<fileset dir="${MYPROJECT.classes.dir}" includes="**/*.class"/>
 			
-			<!-- dependency code (onejar stuff) -->
-			<fileset dir="${onejar.dir}" includes="**/*"/>
-
 			<!-- internal jar resources -->
-			<fileset dir="${resources.jars.dir}/portico.jar" includes="**/*"/>
+			<fileset dir="${resources.jars.dir}/MYPROJECT.jar" includes="**/*"/>
 
 			<!-- license -->
-			<fileset dir="${basedir}" includes="LICENSE.portico"/>
+			<fileset dir="${basedir}" includes="LICENSE.MYPROJECT"/>
 
 			<!-- build.properties file for version information -->
 			<fileset dir="${basedir}" includes="build.properties"/>
 
 			<!-- MANIFEST -->
 			<manifest>
-				<attribute name="Main-Class" value="org.portico.Main"/>
-				<attribute name="Built-By" value="Calytrix Technologies"/>
+				<attribute name="Main-Class" value="org.openlvc.MYPROJECT.Main"/>
+				<attribute name="Built-By" value="Open LVC"/>
 				<section name="org/portico">
 					<attribute name="Implementation-Title" value="portico"/>
 					<attribute name="Implementation-Version" value="${build.version} (build ${build.number}) ${TODAY}"/>
-					<attribute name="Implementation-Vendor" value="Calytrix Technologies"/>
+					<attribute name="Implementation-Vendor" value="Open LVC"/>
 				</section>
 			</manifest>
 		</jar>
@@ -256,20 +253,13 @@
 		<property name="javadoc.dir" value="${sandbox.dir}/documentation/javadoc"/>
 		<mkdir dir="${javadoc.dir}"/>
 		
-		<echo>Generating HLA API documentatin for HLA v1.3 Java Interface</echo>
-		<java-javadoc outdir="${javadoc.dir}/hla13"
-		              packages="hla.rti.*"
-		              sourcepath="${portico.src.dir}"
+		<echo>Generating API documentatin for MYPROJECT Java Interface</echo>
+		<java-javadoc outdir="${javadoc.dir}/MYPROJECT"
+		              packages="org.openlvc.MYPROJECT.*"
+		              sourcepath="${MYPROJECT.src.dir}"
 		              classpath="compile.classpath"
-		              windowtitle="SISO HLA v1.3 Javadoc (The Portico Project)"
-		              header="SISO HLA v1.3 Javadoc"/>
-
-		<echo>Generating API documentation for Portico Core Libraries</echo>
-		<java-javadoc outdir="${javadoc.dir}/portico"
-		              packages="org.portico.*"
-		              sourcepath="${portico.src.dir}"
-		              classpath="compile.classpath"
-		              windowtitle="Portico Core RTI Javadoc"/>
+		              windowtitle="MYPROJECT Javadoc"
+		              header="MYPROJECT Javadoc"/>
 
 	</target>
 
